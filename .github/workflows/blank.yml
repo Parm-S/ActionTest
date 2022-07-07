@@ -41,3 +41,15 @@ jobs:
     steps:
        - name: xxxxx
          run: xxxx
+         
+    DeployDev:
+         name: deploy to dev  
+         if: github.event_name == 'pull_request'
+         needs: [build]
+         runs-on: ubuntu-latest
+         enviroment: 
+           name: Development
+           url: "http://dev.my-app.com"
+         steps:
+           - name: i am deploying
+             run: echo i qm deploying!
